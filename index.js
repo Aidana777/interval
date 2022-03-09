@@ -8,24 +8,24 @@ let intervalId;
 
 startBtn.onclick=()=>{
     intervalId=setInterval(()=>{
-     resultTotal.textContent=numberInput.value
-    },++timeInput.value)
+     resultTotal.textContent=--numberInput.value
+    },timeInput.value)
 }
 resetBtn.onclick=()=>{
     clearInterval(intervalId)
     }
 
 
- let fromDate=document.getElementById("fromDate");
-let untilDate=document.getElementById("untilDate");
+ const fromDate=document.getElementById("fromDate");
+const untilDate=document.getElementById("untilDate");
 const calculateBtn=document.getElementById("calculateBtn");
 const totalNum=document.getElementById("total");
 
 calculateBtn.onclick=()=>{
-    const one=new Date(fromDate)
-    const two=new Date(untilDate)
+    const one=new Date(fromDate.value)
+    const two=new Date(untilDate.value)
     const time=Math.abs(one-two);
-    const days=Math.ceil(time/(1000*60*60*24));
-    totalNum.innerHTML=days
+    const days=(two-one)/1000/60/60/24
+totalNum.textContent=`${Math.round(days/30)} мес ${days%30} д`
 
 }
